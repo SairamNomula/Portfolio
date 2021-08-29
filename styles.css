@@ -134,10 +134,10 @@ img{
     position: fixed;
     top: var(--header-height);
     right: -100%;
-    width: 80%;
+    width: 100%;
     height: 100%;
     padding: 2rem;
-    background-color: var(--second-color);
+    background-color: #000;
     transition: .5s;
   }
 }
