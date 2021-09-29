@@ -334,7 +334,7 @@ img{
   display: flex;
   align-items: center;
 }
-.skills__bar{
+/* .skills__bar{
   position: absolute;
   left: 0;
   bottom: 0;
@@ -360,7 +360,7 @@ img{
 }
 .skills__SQL{
     width: 70%;
-}
+} */
 .skills__img{
   border-radius: .5rem;
 }
