@@ -266,6 +266,70 @@ img{
   border-radius: .5rem;
 }
 
+/* EDU */
+.edu__container{
+  row-gap: 2rem;
+  text-align: center;
+}
+.edu__subtitle{
+  margin-bottom: var(--mb-2);
+}
+.edu__text{
+  margin-bottom: var(--mb-4);
+}
+.edu__data{
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  font-weight: var(--font-semi);
+  padding: .5rem 1rem;
+  margin-bottom: var(--mb-4);
+  border-radius: .5rem;
+  box-shadow: 0 4px 25px rgba(14,36,49,.15);
+}
+.edu__icon{
+  font-size: 3rem;
+  margin-right: var(--mb-2);
+  color: var(--main-color);
+}
+.edu__names{
+  display: flex;
+}
+.edu__school{
+  display: flex;
+}
+.edu__sname{
+  font-size: 1.2rem;
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  font-weight: var(--font-semi);
+  padding: .5rem 1rem;
+  margin-bottom: var(--mb-2);
+}
+.edu__name{
+  font-size: 1.5rem;
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  font-weight: var(--font-semi);
+  padding: .5rem 1rem;
+  margin-bottom: var(--mb-4);
+}
+#edu p{
+  font-size: 1rem;
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  font-weight: var(--font-semi);
+  padding: .5rem 1rem;
+  margin-bottom: var(--mb-4);
+}
+
 /* SKILLS */
 .skills__container{
   row-gap: 2rem;
