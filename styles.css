@@ -240,6 +240,15 @@ img{
   font-weight: var(--font-semi);
   border-radius: .5rem;
 }
+.button2{
+  display: inline-block;
+  background-color: var(--main-color);
+  color: #000;
+  padding: .40rem 2rem;
+  font-weight: var(--font-semi);
+  border-radius: .5rem;
+  cursor: pointer;
+}
 /*  ABOUT */
 .about__container{
   row-gap: 2rem;
