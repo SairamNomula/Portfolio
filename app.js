@@ -58,15 +58,15 @@ sr.reveal('.work__img',{interval: 200});
 sr.reveal('.contact__input',{interval: 200}); 
 
 var typed = new Typed(".typing-1", {
-    strings: ["Developer", "Blog Writer", "Designer"],
-    typeSpeed: 100,
-    backSpeed: 60,
+    strings: ["Developer", "Designer"],
+    typeSpeed: 70,
+    backSpeed: 40,
     loop: true
 });
 
 var typed = new Typed(".typing", {
-    strings: ["Developer", "Blog Writer", "Designer"],
-    typeSpeed: 100,
-    backSpeed: 60,
+    strings: ["Developer", "Designer"],
+    typeSpeed: 70,
+    backSpeed: 30,
     loop: true
 });

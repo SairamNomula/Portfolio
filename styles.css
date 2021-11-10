@@ -249,6 +249,7 @@ img{
   border-radius: .5rem;
   cursor: pointer;
 }
+
 /*  ABOUT */
 .about__container{
   row-gap: 2rem;
@@ -276,7 +277,7 @@ img{
 }
 
 /* EDU */
-.edu__container{
+/* .edu__container{
   row-gap: 2rem;
   text-align: center;
 }
@@ -337,7 +338,7 @@ img{
   font-weight: var(--font-semi);
   padding: .5rem 1rem;
   margin-bottom: var(--mb-4);
-}
+} */
 
 /* SKILLS */
 .skills__container{
@@ -393,6 +394,9 @@ img{
 }
 .skills__python{
     width: 60%;
+}
+.skills__java{
+    width: 30%;
 }
 .skills__SQL{
     width: 70%;
@@ -499,7 +503,7 @@ img{
     bottom: 15%;
   }
 
-  .about__container, .skills__container{
+  .about__container, .skills__container, .edu__container{
     grid-template-columns: repeat(2,1fr);
     align-items: center;
     text-align: initial;
