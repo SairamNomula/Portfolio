@@ -444,9 +444,29 @@ img{
 .footer__icon{
   font-size: 2rem;
   color: #fff;
-  margin: 0 var(--mb-2)
+  margin: 0 var(--mb-2);
 }
 
+/* .sosal{
+  text-align: center;
+  padding: 2rem 0;
+  margin: 0 var(--mb-2);
+}
+
+.mailf{
+  height: 32px;
+  display: block;
+  text-indent: -9999px;
+  background-image: url(https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=Gmail&logoColor=white);
+  background-repeat: no-repeat;
+}
+.gitf{
+  height: 32px;
+  display: block;
+  text-indent: -9999px;
+  background-image: url(https://img.shields.io/badge/github-%2324292e.svg?&style=for-the-badge&logo=github&logoColor=white);
+  background-repeat: no-repeat;
+} */
 /* ===== MEDIA QUERIES=====*/
 @media screen and (min-width: 768px){
   body{
