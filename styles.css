@@ -1,18 +1,16 @@
 /* GOOGLE FONTS */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
-/* VARIABLES CSS */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
 :root{
   --header-height: 3rem;
-  --font-semi: 600;
+  --font-semi: 500;
 }
 
-/* Colores */
 :root{
   --main-color: #8E4BFC;
   --second-color: #fff;
 }
 
-/* Fuente y tipografia */
 :root{
   --body-font: 'Poppins', sans-serif;
   --big-font-size: 2rem;
@@ -27,7 +25,6 @@
   }
 }
 
-/* Margenes */
 :root{
   --mb-1: 0.5rem;
   --mb-2: 1rem;
@@ -37,7 +34,6 @@
   --mb-6: 3rem;
 }
 
-/* z index */
 :root{
   --z-back: -10;
   --z-normal: 1;
@@ -45,13 +41,18 @@
   --z-fixed: 100;
 }
 
-/* BASE */
 *,::before,::after{
   box-sizing: border-box;
 }
 html{
   scroll-behavior: smooth;
 }
+
+*::selection{
+  background:var(--main-color);
+  color:#fff;
+}
+
 body{
   margin: var(--header-height) 0 0 0;
   font-family: var(--body-font);
@@ -76,7 +77,6 @@ img{
   display: block;
 }
 
-/* CLASS CSS */
 .section-title{
   position: relative;
   font-size: var(--h2-font-size);
@@ -101,7 +101,6 @@ img{
   padding-bottom: 2rem;
 }
 
-/* LAYOUT */
 .bd-grid{
   max-width: 1024px;
   display: grid;
@@ -121,7 +120,6 @@ img{
   box-shadow: 0 1px 4px rgba(146,161,176,.15);
 }
 
-/* NAV */
 .nav{
   height: var(--header-height);
   display: flex;
@@ -155,7 +153,7 @@ img{
   position: absolute;
   content: "";
   width: 100%;
-  height: 0.18rem;
+  height: 0.15rem;
   left: 0;
   top: 2rem;
   background-color: var(--main-color);
@@ -276,70 +274,6 @@ img{
   border-radius: .5rem;
 }
 
-/* EDU */
-/* .edu__container{
-  row-gap: 2rem;
-  text-align: center;
-}
-.edu__subtitle{
-  margin-bottom: var(--mb-2);
-}
-.edu__text{
-  margin-bottom: var(--mb-4);
-}
-.edu__data{
-  display: grid;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  font-weight: var(--font-semi);
-  padding: .5rem 1rem;
-  margin-bottom: var(--mb-4);
-  border-radius: .5rem;
-  box-shadow: 0 4px 25px rgba(14,36,49,.15);
-}
-.edu__icon{
-  font-size: 3rem;
-  margin-right: var(--mb-2);
-  color: var(--main-color);
-}
-.edu__names{
-  display: flex;
-}
-.edu__school{
-  display: flex;
-}
-.edu__sname{
-  font-size: 1.2rem;
-  display: grid;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  font-weight: var(--font-semi);
-  padding: .5rem 1rem;
-  margin-bottom: var(--mb-2);
-}
-.edu__name{
-  font-size: 1.5rem;
-  display: grid;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  font-weight: var(--font-semi);
-  padding: .5rem 1rem;
-  margin-bottom: var(--mb-4);
-}
-#edu p{
-  font-size: 1rem;
-  display: grid;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  font-weight: var(--font-semi);
-  padding: .5rem 1rem;
-  margin-bottom: var(--mb-4);
-} */
-
 /* SKILLS */
 .skills__container{
   row-gap: 2rem;
@@ -405,24 +339,7 @@ img{
   border-radius: .5rem;
 }
 
-/* ===== WORK =====*/
-.work__container{
-  row-gap: 2rem;
-}
-.work__img{
-  box-shadow: 0 4px 25px rgba(14,36,49,.15);
-  border-radius: .5rem;
-  overflow: hidden;
-}
-.work__img img{
-  transition: 1s;
-  cursor: pointer;
-}
-.work__img img:hover{
-  transform: scale(1.1);
-}
 
-/* ===== FOOTER =====*/
 .footer{
   background-color: #000;
   color: var(--main-color);
@@ -492,7 +409,7 @@ img{
     padding-top: 0;
   }
   .nav__item{
-    margin-left: var(--mb-6);
+    margin-left: var(--mb-5);
     margin-bottom: 0;
   }
   .nav__toggle{
@@ -553,3 +470,68 @@ img{
     right: 10%;
   }
 }
+
+.education .row{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.education .row .column{
+  flex:1 1 40rem;
+  margin:1rem;
+  padding:2rem;
+  border:.1rem solid rgba(0,0,0,.2);
+  box-shadow: 0 .5rem 1rem #4d2888;
+  border-radius: .5rem;
+}
+
+.education .row .column .title{
+  color:var(--main-color);
+  font-size: 2.5rem;
+  padding-bottom: 2rem;
+}
+
+.education .row .column .box{
+  padding-left: 2.5rem;
+  padding-bottom: 2rem;
+  border-left: .2rem solid var(--main-color);
+  position: relative;
+}
+
+.education .row .column .box::before{
+  content: '';
+  position: absolute;
+  top:.1rem; left: -1.1rem;
+  height:2rem;
+  width:2rem;
+  border-radius: 50%;
+  background:var(--main-color);
+}
+
+.education .row .column .box .year{
+  font-size: 1.5rem;
+  color:#999;
+  padding-bottom: .5rem;
+}
+
+.education .row .column .box .year i{
+  padding-right: .5rem;
+}
+
+.education .row .column .box h3{
+  color:#fff;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.education .row .column .box p{
+  color:rgb(201, 201, 201);
+  font-size: 1.5rem;
+  padding-top: .5rem;
+}
+/* section{
+  min-height: 100vh;
+  padding:0 9%;
+  padding-top: 7.5rem;
+  padding-bottom: 3rem;
+} */
