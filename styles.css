@@ -140,7 +140,7 @@ img{
   }
 }
 .nav__item{
-  margin-bottom: var(--mb-4);
+  margin-bottom: var(--mb-5);
 }
 .nav__link{
   position: relative;
@@ -159,10 +159,11 @@ img{
   background-color: var(--main-color);
 }
 .nav__logo{
-  color: var(--second-color);
+  color: var(--main-color);
+  cursor: pointer;
 }
 .nav__toggle{
-  color: var(--second-color);
+  color: var(--main-color);
   font-size: 1.5rem;
   cursor: pointer;
 }
@@ -172,7 +173,7 @@ img{
   position: absolute;
   content: "";
   width: 100%;
-  height: 0.18rem;
+  height: 0.2rem;
   left: 0;
   top: 2rem;
   background-color: var(--main-color);
