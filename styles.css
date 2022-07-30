@@ -116,8 +116,16 @@ img{
   top: 0;
   left: 0;
   z-index: var(--z-fixed);
-  background-color: rgba(146,161,176,.15);
-  box-shadow: 0 1px 4px rgba(146,161,176,.15);
+  background-color: rgba(43, 45, 48, 0.932);
+  box-shadow: 0 1px 4px rgba(35, 37, 39, 0.752);
+  /* padding-bottom: 15px;
+  clip-path:
+  polygon(
+    0% 0%,
+    100% 0%
+    100% calc(100% -15px),
+    0% 100%
+  ); */
 }
 
 .nav{
@@ -536,3 +544,26 @@ img{
   padding-top: 7.5rem;
   padding-bottom: 3rem;
 } */
+
+figure.card{
+  display: grid;
+  grid-template: minmax(0,1fr)/minmax(0,1fr);
+  grid-template-areas: "stack";
+}
+
+figure.card >img{
+  grid-area: stack;
+  object-fit: cover;
+  place-self: stretch;
+}
+
+figure.card > figcaption{
+  grid-area: stack;
+  align-self: end;
+  justify-self: stretch;
+  background-color: #272739a8;
+  color: #fff;
+  text-align: start;
+  padding: 15px;
+  backdrop-filter: blur(6px);
+}
