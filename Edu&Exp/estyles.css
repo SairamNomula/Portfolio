@@ -183,12 +183,12 @@ ul{
 
 .education .row .column .box h3{
     color:#fff;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 500;
 }
 
 .education .row .column .box p{
-    color:rgb(201, 201, 201);
-    font-size: 1.5rem;
+    color: #8E4BFC;
+    font-size: 1.6rem;
     padding-top: .5rem;
 }
