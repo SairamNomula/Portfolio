@@ -280,7 +280,8 @@ img{
 }
 .about__img img{
   width: 200px;
-  border-radius: .5rem;
+  height: 200px;
+  border-radius: .2rem;
 }
 
 /* SKILLS */
@@ -455,7 +456,7 @@ img{
     text-align: initial;
   }
   .about__img img{
-    width: 300px;
+    width: 100%;
   }
   .work__container{
     grid-template-columns: repeat(3, 1fr);
