@@ -90,7 +90,7 @@ ul{
     }
 }
 .nav__item{
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
 }
 .nav__link{
     position:sticky;
@@ -201,4 +201,13 @@ ul{
     .home__img{
       right: 10%;
     }
+}
+
+.button1{
+    display: inline-block;
+    background-color: var(--main-color);
+    color: #fff;
+    padding: .40rem 2rem;
+    font-weight: var(--font-semi);
+    border-radius: .5rem;
   }
