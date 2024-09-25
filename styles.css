@@ -58,7 +58,7 @@ body{
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   color: var(--second-color);
-  background-color: rgb(36, 36, 36);
+  background-color: rgb(19, 19, 19);
 }
 h1,h2,p{
   margin: 0;
@@ -116,7 +116,7 @@ img{
   top: 0;
   left: 0;
   z-index: var(--z-fixed);
-  background-color: rgba(43, 45, 48, 0.932);
+  background-color: rgba(31, 32, 33, 0.953);
   box-shadow: 0 1px 4px rgba(35, 37, 39, 0.752);
   /* padding-bottom: 15px;
   clip-path:
