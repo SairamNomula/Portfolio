@@ -1,75 +1,55 @@
-/*===== MENU SHOW =====*/ 
-const showMenu = (toggleId, navId) =>{
-    const toggle = document.getElementById(toggleId),
-    nav = document.getElementById(navId)
-
-    if(toggle && nav){
-        toggle.addEventListener('click', ()=>{
-            nav.classList.toggle('show')
-        })
-    }
-}
-showMenu('nav-toggle','nav-menu')
-
-
-/*===== ACTIVE AND REMOVE MENU =====*/
-const navLink = document.querySelectorAll('.nav__link');   
-
-function linkAction(){
-  /*Active link*/
-  navLink.forEach(n => n.classList.remove('active'));
-  this.classList.add('active');
-  
-  /*Remove menu mobile*/
-  const navMenu = document.getElementById('nav-menu')
-  navMenu.classList.remove('show')
-}
-navLink.forEach(n => n.addEventListener('click', linkAction));
-
-/*===== SCROLL REVEAL ANIMATION =====*/
-const sr = ScrollReveal({
-    origin: 'top',
-    distance: '80px',
-    duration: 2000,
-    reset: true
-});
-
-/*SCROLL HOME*/
-sr.reveal('.home__title',{}); 
-sr.reveal('.button',{delay: 200}); 
-sr.reveal('.home__img',{delay: 400}); 
-sr.reveal('.home__social-icon',{ interval: 200}); 
-
-/*SCROLL ABOUT*/
-sr.reveal('.about__img',{}); 
-sr.reveal('.about__subtitle',{delay: 400}); 
-sr.reveal('.about__typing',{delay: 400});
-sr.reveal('.about__text',{delay: 400}); 
-
-
-/*SCROLL WORK*/
-sr.reveal('.work__img',{interval: 200}); 
-
-/*SCROLL CONTACT*/
-sr.reveal('.contact__input',{interval: 200}); 
-
-var typed = new Typed(".typing-1", {
-    strings: ["Developer", "Designer", "Engineer", "Analyst"],
-    typeSpeed: 70,
-    backSpeed: 40,
-    loop: true
-});
-
-var typed = new Typed(".typing", {
-    strings: ["Developer", "Designer", "Engineer", "Analyst"],
-    typeSpeed: 70,
-    backSpeed: 30,
-    loop: true
-});
-
 document.addEventListener('DOMContentLoaded', () => {
-    const groups = document.querySelectorAll('.skills__group');
-  
+  // ===== MENU SHOW =====
+  const navToggle = document.getElementById('nav-toggle');
+  const navMenu   = document.getElementById('nav-menu');
+  navToggle?.addEventListener('click', () => {
+    navMenu?.classList.toggle('show');
+  });
+
+  // ===== ACTIVE LINK & HIDE MOBILE MENU =====
+  const navLinks = Array.from(document.querySelectorAll('.nav__link'));
+  navLinks.forEach(link =>
+    link.addEventListener('click', () => {
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      navMenu?.classList.remove('show');
+    })
+  );
+
+  // ===== SCROLLREVEAL =====
+  if (window.ScrollReveal) {
+    const sr = ScrollReveal({ origin: 'top', distance: '80px', duration: 2000, reset: true });
+    sr.reveal('.home__title');
+    sr.reveal('.button',            { delay: 200 });
+    sr.reveal('.home__img',         { delay: 400 });
+    sr.reveal('.home__social-icon', { interval: 200 });
+    sr.reveal('.about__img');
+    sr.reveal('.about__subtitle', { delay: 400 });
+    sr.reveal('.about__typing',   { delay: 400 });
+    sr.reveal('.about__text',     { delay: 400 });
+    sr.reveal('.work__img',      { interval: 200 });
+    sr.reveal('.contact__input', { interval: 200 });
+  }
+
+  // ===== TYPED.JS =====
+  if (window.Typed) {
+    new Typed('.typing-1', {
+      strings:   ['Developer', 'Designer', 'Engineer', 'Analyst'],
+      typeSpeed: 70,
+      backSpeed: 40,
+      loop:      true
+    });
+    new Typed('.typing', {
+      strings:   ['Developer', 'Designer', 'Engineer', 'Analyst'],
+      typeSpeed: 70,
+      backSpeed: 30,
+      loop:      true
+    });
+  }
+
+  // ===== SKILLS ANIMATION =====
+  const skillGroups = Array.from(document.querySelectorAll('.skills__group'));
+  if (skillGroups.length && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -77,11 +57,19 @@ document.addEventListener('DOMContentLoaded', () => {
           obs.unobserve(entry.target);
         }
       });
-    }, {
-      rootMargin: '0px 0px -10% 0px',
-      threshold: 0.1
-    });
-  
-    groups.forEach(group => observer.observe(group));
-  });
-  
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+    skillGroups.forEach(group => observer.observe(group));
+  }
+
+  // ===== FEATURED MARQUEE SETUP =====
+  // In app.js, inside DOMContentLoaded:
+const carousel = document.querySelector('#featured .carousel');
+if (carousel) {
+  // clone original five cards so the loop has 10 total
+  const originals = Array.from(carousel.children);
+  originals.forEach(card => carousel.appendChild(card.cloneNode(true)));
+  // hide native scrollbars
+  carousel.style.overflow = 'hidden';
+}
+
+});

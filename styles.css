@@ -3,15 +3,12 @@
 /* GOOGLE FONTS */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-:root{
-  --header-height: 3rem;
-  --font-semi: 500;
-}
 
 :root{
   --main-color: #8E4BFC;
   --second-color: #fff;
 }
+
 
 :root{
   --body-font: 'Poppins', sans-serif;
@@ -106,8 +103,10 @@ img{
   color: var(--main-color);
   margin-top: var(--mb-2);
   margin-bottom: var(--mb-4);
+  text-transform: uppercase;
   text-align: center;
 }
+
 .section-title::after{
   position: absolute;
   content: "";
@@ -122,6 +121,11 @@ img{
 .section{
   padding-top: 3rem;
   padding-bottom: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;   /* stack your elements vertically */
+  justify-content: center;  /* vertical centering */
+  align-items: center;
 }
 
 .bd-grid{
@@ -730,110 +734,93 @@ img{
 }
 
 
-/* Projects wrapper: center + max width */
-#projects {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem auto 5rem;
-  width: 80%;
-  max-width: 1200px;    /* caps the page-width */
+/* ===== Projects Section CSS ===== */
+
+#projects .container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Divider */
-#projects .division {
-  width: 64px;
-  height: 4px;
-  background-color: var(--main-color);
+#projects .section-title {
+  position: relative;
+  font-size: var(--h2-font-size);
+  color: var(--main-color);
+  margin-top: var(--mb-2);
   margin-bottom: var(--mb-4);
-}
-
-/* Heading + subtitle */
-#projects .content-text {
+  text-transform: uppercase;
   text-align: center;
-  margin-bottom: var(--mb-6);
-  width: 100%;
-}
-#projects .content-text h2 {
-  font-size: var(--big-font-size);
-  margin-bottom: var(--mb-2);
-}
-#projects .content-text p {
-  color: rgb(200,200,200);
-  font-size: var(--normal-font-size);
 }
 
-/* 3-column grid with flexible gaps */
-#projects .project {
+#projects .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  gap: var(--mb-4);
+  margin-top: var(--mb-4);
   width: 100%;
 }
 
-/* Card: fixed aspect ratio, background cover */
 #projects .card {
   position: relative;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   overflow: hidden;
   background-size: cover;
   background-position: center;
-  aspect-ratio: 16/9;          /* maintains a consistent rectangle */
-  transition: transform .3s ease, box-shadow .3s ease;
+  aspect-ratio: 16/9;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 #projects .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-/* Overlay on hover */
 #projects .project-info {
   position: absolute;
   bottom: 0;
-  left: 0; right: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  padding: var(--mb-2);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
   opacity: 0;
-  transition: opacity .5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 #projects .card:hover .project-info {
   opacity: 1;
 }
 
-/* Text sizing */
 #projects .project-bio h3 {
   font-size: 1.1rem;
-  margin-bottom: .25rem;
+  margin-bottom: 0.25rem;
 }
 #projects .project-bio p {
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: #ccc;
 }
 
-/* Links */
 #projects .project-link a {
   color: #fff;
   font-size: 1.2rem;
-  margin-left: 1rem;
-  transition: color .3s ease;
+  margin-left: var(--mb-2);
+  transition: color 0.3s ease;
 }
 #projects .project-link a:hover {
   color: var(--main-color);
 }
 
-/* “See More” */
 #projects .btn-secondary {
-  margin-top: 2.5rem;
+  display: inline-block;
+  margin: var(--mb-6) auto 0;
+  padding: 0.75rem 2rem;
 }
 
-/* Mobile: single column */
-@media (max-width: 768px) {
-  #projects .project {
+@media screen and (max-width: 768px) {
+  #projects .project-grid {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 /* Container caps width & centers content */
@@ -905,3 +892,66 @@ img{
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== Featured Section ===== */
+#featured {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: var(--mb-6) 0;
+}
+
+#featured .section-title {
+  margin-bottom: var(--mb-4);
+}
+
+/* Wrapper hides overflow */
+#featured .carousel-wrapper {
+  overflow: hidden;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* **GRID** track: 5 columns, each taking 1/5 of container minus gaps */
+#featured .carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - (4 * var(--mb-3))) / 5);
+  gap: var(--mb-3);
+  animation: marquee 50s linear infinite;
+}
+
+/* pause on hover */
+#featured .carousel-wrapper:hover .carousel {
+  animation-play-state: paused;
+}
+
+/* marquee keyframes move exactly one “set” (50% of track) */
+@keyframes marquee {
+  from { transform: translateX(0);     }
+  to   { transform: translateX(-50%); }
+}
+
+/* Cards now fill their grid cell */
+#featured .card {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(31,32,33);
+  border: 1px solid var(--main-color);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+#featured .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.75);
+}
+
+/* Image + body unchanged */
+#featured .card-media { height: 160px; background: #111; }
+#featured .card-media img { width:100%;height:100%;object-fit:cover; }
+#featured .card-body { padding: var(--mb-3); background: rgb(19,19,19); }
+#featured .card-title { font-size: var(--h2-font-size); margin-bottom: var(--mb-2); color: var(--second-color); }
+#featured .card-subtitle { font-size: var(--normal-font-size); color: #aaa; }
+
+/* hide old arrows */
+#featured .carousel-btn { display: none; }
