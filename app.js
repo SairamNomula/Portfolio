@@ -11,6 +11,7 @@ const showMenu = (toggleId, navId) =>{
 }
 showMenu('nav-toggle','nav-menu')
 
+
 /*===== ACTIVE AND REMOVE MENU =====*/
 const navLink = document.querySelectorAll('.nav__link');   
 
@@ -53,14 +54,14 @@ sr.reveal('.work__img',{interval: 200});
 sr.reveal('.contact__input',{interval: 200}); 
 
 var typed = new Typed(".typing-1", {
-    strings: ["Developer", "Designer"],
+    strings: ["Developer", "Designer", "Engineer", "Analyst"],
     typeSpeed: 70,
     backSpeed: 40,
     loop: true
 });
 
 var typed = new Typed(".typing", {
-    strings: ["Developer", "Designer"],
+    strings: ["Developer", "Designer", "Engineer", "Analyst"],
     typeSpeed: 70,
     backSpeed: 30,
     loop: true

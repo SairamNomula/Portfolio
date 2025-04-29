@@ -6,7 +6,6 @@
 :root{
   --header-height: 3rem;
   --font-semi: 500;
-  cursor: url('/cursor') 16 16, auto !important;
 }
 
 :root{
@@ -476,132 +475,170 @@ img{
   }
 }
 
-/* ── EDUCATION: POSTCARD CARDS ── */
-.edu__container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
-  margin-top: var(--mb-2);
+/* Container to center + cap width */
+#education .container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.card-edu {
-  background: rgb(31 32 33);
-  border-radius: .5rem;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card-edu:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.5);
-}
-
-.card-edu img {
-  display: block;
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 1rem 1.5rem;
-}
-
-.card-content .year {
-  display: flex;
-  align-items: center;
-  color: #ccc;
-  font-size: 0.95rem;
-  margin-bottom: .5rem;
-}
-
-.card-content .year i {
-  margin-right: .5rem;
-  color: var(--main-color);
-  font-size: 1.1rem;
-}
-
-.card-content h3 {
-  color: #fff;
-  font-size: 1.2rem;
-  margin-bottom: .5rem;
-}
-
-.card-content p {
-  color: rgb(200,200,200);
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-
-/* Responsive: ensure section title sits above */
+/* Section title */
 #education .section-title {
-  margin-bottom: var(--mb-4);
+  text-align: center;
+  margin-bottom: var(--mb-6);
 }
 
-
-/* ── EXPERIENCE: POSTCARD CARDS ── */
-.exp__container {
+/* Grid of cards */
+.edu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
-  margin-top: var(--mb-2);
 }
 
-.card-exp {
-  background: rgb(31 32 33);
-  border-radius: .5rem;
+/* Card base */
+.edu-card {
+  background: rgb(31,32,33);
+  border-radius: .75rem;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform .3s ease, box-shadow .3s ease;
 }
-
-.card-exp:hover {
+.edu-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 32px rgba(0,0,0,0.5);
 }
 
-.card-exp img {
-  display: block;
+/* Media (image banner) */
+.edu-card-media {
   width: 100%;
-  height: 140px;
-  object-fit: cover;
+  aspect-ratio: 16/9;
+  background-size: cover;
+  background-position: center;
 }
 
-.card-exp .card-content {
-  padding: 1rem 1.5rem;
+/* Content area */
+.edu-card-content {
+  padding: 1.5rem;
 }
 
-.card-exp .card-content .year {
+/* Date line */
+.edu-date {
   display: flex;
   align-items: center;
+  font-size: .95rem;
   color: #ccc;
-  font-size: 0.95rem;
-  margin-bottom: .5rem;
+  margin-bottom: .75rem;
 }
-
-.card-exp .card-content .year i {
+.edu-date i {
   margin-right: .5rem;
   color: var(--main-color);
   font-size: 1.1rem;
 }
 
-.card-exp .card-content h3 {
+/* Degree title */
+.edu-degree {
+  font-size: 1.25rem;
   color: #fff;
-  font-size: 1.2rem;
   margin-bottom: .5rem;
 }
 
-.card-exp .card-content p {
+/* Institution text */
+.edu-institution {
+  font-size: .9rem;
   color: rgb(200,200,200);
-  font-size: 0.9rem;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
-/* Ensure section title spacing */
-#experience .section-title {
-  margin-bottom: var(--mb-4);
+/* Responsive: single column on small screens */
+@media (max-width: 768px) {
+  .edu-grid {
+    grid-template-columns: 1fr;
+  }
 }
+
+
+
+/* Container */
+#experience .container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Section title */
+#experience .section-title {
+  text-align: center;
+  margin-bottom: var(--mb-6);
+}
+
+/* Experience grid */
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+/* Card base */
+.exp-card {
+  background: rgb(31,32,33);
+  border-radius: .75rem;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.exp-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+}
+
+/* Media (image) */
+.exp-card-media {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Content */
+.exp-card-content {
+  padding: 1.5rem;
+}
+
+/* Date line */
+.exp-date {
+  display: flex;
+  align-items: center;
+  font-size: .95rem;
+  color: #ccc;
+  margin-bottom: .75rem;
+}
+.exp-date i {
+  margin-right: .5rem;
+  color: var(--main-color);
+  font-size: 1.1rem;
+}
+
+/* Role title */
+.exp-role {
+  font-size: 1.25rem;
+  color: #fff;
+  margin-bottom: .5rem;
+}
+
+/* Organization */
+.exp-org {
+  font-size: .9rem;
+  color: rgb(200,200,200);
+  line-height: 1.5;
+}
+
+/* Responsive tweak: single column on narrow screens */
+@media (max-width: 768px) {
+  .exp-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 
 /* Make the parent positioned for absolute children */
@@ -625,40 +662,49 @@ img{
 }
 
 
-/* container grid: labels on left, items on right */
-.skills-grid {
-  display: grid;
-  grid-template-columns: min-content 1fr;
-  gap: 2rem;
-  align-items: start;
+/* ===== SKILLS SECTION ===== */
+#skills {
+  padding: 4rem 0;
 }
 
-/* Left labels */
-.skills-labels {
-  display: flex;
-  flex-direction: column;
+/* Section title */
+#skills .section-title {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  color: var(--main-color);
 }
+
+/* Two-column grid: labels and icon rows */
+.skills-grid {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 2rem;
+  row-gap: 1.5rem;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Category labels */
 .skills-label {
   font-size: 1.5rem;
   font-weight: 700;
   text-transform: uppercase;
   color: #888;
-  margin-bottom: 2.5rem;
 }
 
-/* Right: each row of icons */
-.skills-rows {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
+/* Icon rows */
 .skills-row {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem 2.5rem;
 }
 
-/* Icon + text */
+/* Individual skill item */
 .skill-item {
   display: flex;
   align-items: center;
@@ -666,14 +712,196 @@ img{
   font-size: 1rem;
   color: var(--second-color);
 }
+
+/* Icon sizing */
 .skill-icon {
   width: 32px;
   height: 32px;
 }
 
-/* Section title override (if needed) */
-#skills .section-title {
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 3rem;
+/* Responsive: stack labels above rows on small screens */
+@media screen and (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  .skills-label {
+    margin-top: 2rem;
+  }
+}
+
+
+/* Projects wrapper: center + max width */
+#projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem auto 5rem;
+  width: 80%;
+  max-width: 1200px;    /* caps the page-width */
+}
+
+/* Divider */
+#projects .division {
+  width: 64px;
+  height: 4px;
+  background-color: var(--main-color);
+  margin-bottom: var(--mb-4);
+}
+
+/* Heading + subtitle */
+#projects .content-text {
+  text-align: center;
+  margin-bottom: var(--mb-6);
+  width: 100%;
+}
+#projects .content-text h2 {
+  font-size: var(--big-font-size);
+  margin-bottom: var(--mb-2);
+}
+#projects .content-text p {
+  color: rgb(200,200,200);
+  font-size: var(--normal-font-size);
+}
+
+/* 3-column grid with flexible gaps */
+#projects .project {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Card: fixed aspect ratio, background cover */
+#projects .card {
+  position: relative;
+  border-radius: .5rem;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  aspect-ratio: 16/9;          /* maintains a consistent rectangle */
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+#projects .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* Overlay on hover */
+#projects .project-info {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+}
+#projects .card:hover .project-info {
+  opacity: 1;
+}
+
+/* Text sizing */
+#projects .project-bio h3 {
+  font-size: 1.1rem;
+  margin-bottom: .25rem;
+}
+#projects .project-bio p {
+  font-size: .9rem;
+  color: #ccc;
+}
+
+/* Links */
+#projects .project-link a {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+  transition: color .3s ease;
+}
+#projects .project-link a:hover {
+  color: var(--main-color);
+}
+
+/* “See More” */
+#projects .btn-secondary {
+  margin-top: 2.5rem;
+}
+
+/* Mobile: single column */
+@media (max-width: 768px) {
+  #projects .project {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Container caps width & centers content */
+#clubs-volunteering .container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Two-column responsive grid */
+#clubs-volunteering .cv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: var(--mb-4);
+}
+
+/* Section title uses existing .section-title styling */
+
+/* Column headings */
+.cv-heading {
+  font-size: 1.5rem;
+  margin-bottom: var(--mb-3);
+  color: var(--main-color);
+}
+
+/* Card styling */
+.cv-box {
+  background: rgb(31, 32, 33);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+.cv-box:hover {
+  transform: translateY(-4px);
+}
+
+/* Date line */
+.cv-year {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+}
+.cv-year i {
+  margin-right: 0.5rem;
+  color: var(--main-color);
+}
+
+/* Role title */
+.cv-role {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+/* Organization name */
+.cv-org {
+  font-size: 0.95rem;
+  color: #aaa;
+  line-height: 1.4;
+}
+
+/* Mobile: stack columns */
+@media screen and (max-width: 768px) {
+  #clubs-volunteering .cv-grid {
+    grid-template-columns: 1fr;
+  }
 }
