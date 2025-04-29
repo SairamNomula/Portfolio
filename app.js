@@ -1,19 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
   // ===== MENU SHOW =====
-  const navToggle = document.getElementById('nav-toggle');
   const navMenu   = document.getElementById('nav-menu');
-  navToggle?.addEventListener('click', () => {
-    navMenu?.classList.toggle('show');
+  const navToggle = document.getElementById('nav-toggle');
+  const navClose  = document.getElementById('nav-close');
+
+  navToggle.addEventListener('click', () => {
+    navMenu.classList.add('show');
+  });
+  navClose.addEventListener('click', () => {
+    navMenu.classList.remove('show');
   });
 
-  // ===== ACTIVE LINK & HIDE MOBILE MENU =====
-  const navLinks = Array.from(document.querySelectorAll('.nav__link'));
-  navLinks.forEach(link =>
-    link.addEventListener('click', () => {
-      navLinks.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-      navMenu?.classList.remove('show');
-    })
+document.querySelectorAll('.nav__link-list a').forEach(link =>
+    link.addEventListener('click', () => navMenu.classList.remove('show'))
   );
 
   // ===== SCROLLREVEAL =====

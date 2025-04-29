@@ -155,6 +155,15 @@ img{
   ); */
 }
 
+.visitor-count {
+  display: flex;
+  align-items: center;
+  z-index: var(--z-fixed);
+}
+.visitor-count img {
+  display: block;
+}
+
 .nav{
   height: var(--header-height);
   display: flex;
