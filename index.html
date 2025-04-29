@@ -16,6 +16,11 @@
         <title>Sairam's Portfolio</title>
     </head>
     <body>
+      <video id="bg-video" autoplay muted loop playsinline>
+        <source src="bgvideo2.mp4" type="video/mp4">
+        <!-- Fallback message -->
+        Your browser does not support HTML5 video.
+      </video>
         <!--===== HEADER =====-->
         <header class="l-header">
             <nav class="nav bd-grid">
@@ -53,31 +58,45 @@
 
                 <div class="home__social">
                     <a href="mailto:sairamnomula14@gmail.com" class="home__social-icon" target="_blank"><i class='bx bx-mail-send'></i></i></a>
-                    <a href="https://www.linkedin.com/in/sairam-nomula-8aa752192/" class="home__social-icon" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://www.linkedin.com/in/sairamnomula14" class="home__social-icon" target="_blank"><i class='bx bxl-linkedin'></i></a>
                     <a href="https://github.com/SairamNomula" class="home__social-icon" target="_blank"><i class='bx bxl-github' ></i></a>
                     <a href="https://www.instagram.com/sairam_nomula/" class="home__social-icon" target="_blank"><i class='bx bxl-instagram' ></i></a>
                 </div>
-
+<!-- 
                 <div class="home__img">    
                     <img src="images/Hero.png" alt="">
-                </div>
+                </div> -->
             </section>
 
             <!--===== ABOUT =====-->
-            <section class="about section " id="about">
-                <h2 class="section-title">About</h2>
+<section class="about section" id="about">
 
-                <div class="about__container bd-grid">
-                    <div class="about__img">
-                        <img src="images/working.jpeg" alt="">
-                    </div>
-                    
-                    <div>
-                        <h2 class="about__subtitle">I'm <span class="home__title-color">Venkata Naga Sai Ram Nomula</span>.</h2>
-                        <p class="about__text">A Masters student in Computer Science at the University of Houston, involved in research aimed at advancing cybersecurity frameworks. With a Bachelor of Technology in Computer Science Engineering from SRM Institute of Science and Technology, India, my academic and practical training is grounded in a robust technological foundation, fostering innovation and effective problem-solving in complex environments. I am focused on crafting and refining technology solutions that significantly improve user experiences and operational efficiency, aligning with the evolving demands of the tech industry.</p>
-                    </div>                                   
-                </div>
-            </section>
+  <div class="about__container bd-grid">
+    <!-- Hero statement -->
+    <div class="about__hero">
+      <p class="about__hero-text"> "Generalist rather than a Specialist" </p>
+    </div>
+
+    <!-- Label + divider -->
+    <div class="about__label-wrap">
+      <span class="about__label">This is me.</span>
+      <hr class="about__divider" />
+    </div>
+
+    <!-- Two-column intro -->
+    <div class="about__intro-grid">
+      <h2 class="about__intro-heading">
+        I’m <span class="home__title-color">Venkata Naga Sai Ram Nomula</span>.
+      </h2>
+      <div class="about__intro-text">
+        <p>
+          👨🏽‍💻 Passionately committed to expanding knowledge across various technology domains. Professional and academic experiences reflect a strong curiosity and an active approach to embracing and overcoming new challenges. Focused on crafting and refining technology solutions that significantly enhance user experiences and operational efficiency, aligned with the evolving demands of the tech industry.
+          </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- ===== EDUCATION (Postcard Style) ===== -->
 <section id="education" class="education section" data-aos="fade-up">
@@ -173,39 +192,138 @@
   </section>
   
   
+  
+  <section class="skills section" id="skills">
+    <h2 class="section-title">My Stack</h2>
+  
+    <div class="skills-grid bd-grid">
+      <!-- Left column: category labels -->
+      <div class="skills-labels">
+        <div class="skills-label">Languages</div>
+        <div class="skills-label">Frontend</div>
+        <div class="skills-label">Backend</div>
+        <div class="skills-label">Database</div>
+        <div class="skills-label">Tools</div>
+      </div>
+  
+      <!-- Right column: rows of items -->
+      <div class="skills-rows">
 
-
-            <!--===== SKILLS =====-->
-    <section class="skills section" id="skills">
-        <h2 class="section-title">Skills &amp; Tools</h2>
-        <div class="skills__container bd-grid">
-          <!-- Languages -->
-          <div class="skills__group" data-aos="fade-up">
-            <h3>Languages</h3>
-            <p>Python, Java, JavaScript, C/C++, SQL, HTML/CSS</p>
+        <!-- Languages row -->
+        <div class="skills-row">
+          <div class="skill-item">
+            <img src="/logos/python.png" alt="Python" class="skill-icon">
+            <span>Python</span>
           </div>
-          <!-- Frontend & Backend -->
-          <div class="skills__group" data-aos="fade-up" data-aos-delay="100">
-            <h3>Frontend &amp; Backend</h3>
-            <p>React, Bootstrap, Node.js, FastAPI, GraphQL, REST</p>
+          <div class="skill-item">
+            <img src="/logos/java.png" alt="Java" class="skill-icon">
+            <span>Java</span>
           </div>
-          <!-- Databases -->
-          <div class="skills__group" data-aos="fade-up" data-aos-delay="200">
-            <h3>Databases</h3>
-            <p>RDS, MongoDB, Oracle, DynamoDB, Firebase, SQLite, Redis</p>
+          <div class="skill-item">
+            <img src="/logos/cplusplus.png" alt="C++" class="skill-icon">
+            <span>C++</span>
           </div>
-          <!-- Cloud -->
-          <div class="skills__group" data-aos="fade-up" data-aos-delay="300">
-            <h3>Cloud &amp; DevOps</h3>
-            <p>AWS (EC2, S3, Lambda, Lightsail, Glue, Athena, SQS), Kubernetes, BigQuery, Docker</p>
+          <div class="skill-item">
+            <img src="/logos/c.png" alt="C" class="skill-icon">
+            <span>C</span>
           </div>
-          <!-- Other Tools -->
-          <div class="skills__group" data-aos="fade-up" data-aos-delay="400">
-            <h3>Other Tools</h3>
-            <p>Git, Jenkins, Kafka, Zookeeper, Confluence, Jira, Tableau, PowerBI, Figma, Postman</p>
+          <div class="skill-item">
+            <img src="/logos/sql.png" alt="sql" class="skill-icon">
+            <span>SQL</span>
           </div>
         </div>
-      </section>
+
+
+        <!-- FRONTEND row -->
+        <div class="skills-row">
+          <div class="skill-item">
+            <img src="/logos/html5.png" alt="HTML5" class="skill-icon">
+            <span>HTML5</span>
+          </div>
+          <div class="skill-item">
+            <img src="/logos/css3.png" alt="CSS3" class="skill-icon">
+            <span>CSS3</span>
+          </div>
+          <div class="skill-item">
+            <img src="/logos/js.png" alt="JavaScript" class="skill-icon">
+            <span>JavaScript</span>
+          </div>
+          <!-- <div class="skill-item">
+            <img src="/logos/typescript.png" alt="TypeScript" class="skill-icon">
+            <span>TypeScript</span>
+          </div> -->
+          <div class="skill-item">
+            <img src="/logos/react.png" alt="React" class="skill-icon">
+            <span>React</span>
+          </div>
+          <!-- <div class="skill-item">
+            <img src="/logos/nextjs.png" alt="Next.js" class="skill-icon">
+            <span>Next.js</span>
+          </div> -->
+          <!-- <div class="skill-item">
+            <img src="/logos/redux.png" alt="Redux" class="skill-icon">
+            <span>Redux</span>
+          </div> -->
+          <!-- <div class="skill-item">
+            <img src="/logos/tailwing.png" alt="Tailwind CSS" class="skill-icon">
+            <span>Tailwind CSS</span>
+          </div> -->
+          <div class="skill-item">
+            <img src="/logos/bootstrap.png" alt="Bootstrap" class="skill-icon">
+            <span>Bootstrap</span>
+          </div>
+        </div>
+  
+        <!-- BACKEND row -->
+        <div class="skills-row">
+          <div class="skill-item">
+            <img src="/logos/nodejs.png" alt="Node.js" class="skill-icon">
+            <span>Node.js</span>
+          </div>
+          <div class="skill-item">
+            <img src="/logos/expressjs.png" alt="Express.js" class="skill-icon">
+            <span>Express.js</span>
+          </div>
+        </div>
+  
+        <!-- DATABASE row -->
+        <div class="skills-row">
+          <div class="skill-item">
+            <img src="/logos/mysql.png" alt="MySQL" class="skill-icon">
+            <span>MySQL</span>
+          </div>
+          <!-- <div class="skill-item">
+            <img src="/logos/postgresql.png" alt="PostgreSQL" class="skill-icon">
+            <span>PostgreSQL</span>
+          </div> -->
+          <div class="skill-item">
+            <img src="/logos/mongodb.png" alt="MongoDB" class="skill-icon">
+            <span>MongoDB</span>
+          </div>
+        </div>
+  
+        <!-- TOOLS row -->
+        <div class="skills-row">
+          <div class="skill-item">
+            <img src="assets/icons/git.svg" alt="Git" class="skill-icon">
+            <span>Git</span>
+          </div>
+          <div class="skill-item">
+            <img src="assets/icons/docker.svg" alt="Docker" class="skill-icon">
+            <span>Docker</span>
+          </div>
+          <div class="skill-item">
+            <img src="assets/icons/aws.svg" alt="AWS" class="skill-icon">
+            <span>AWS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+
 
             <!-- Personal Projects -->
             <section class="projects section" id="projects">

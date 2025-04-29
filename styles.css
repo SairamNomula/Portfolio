@@ -2,10 +2,11 @@
 
 /* GOOGLE FONTS */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 :root{
   --header-height: 3rem;
   --font-semi: 500;
+  cursor: url('/cursor') 16 16, auto !important;
 }
 
 :root{
@@ -48,6 +49,28 @@
 }
 html{
   scroll-behavior: smooth;
+  height: 100%;
+  margin: 0;
+  background: transparent;
+  
+}
+
+/* Video background styling */
+#bg-video {
+  position: fixed;
+  top:   0;
+  left:  0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* fill without distortion */
+  z-index: -1;             /* behind everything */
+  filter: blur(8px) brightness(0.1);
+}
+
+/* Make sure your header/nav sits above */
+.l-header {
+  z-index: var(--z-fixed); /* already 100 */
+  background-color: rgba(31,32,33,0.85); /* semi-transparent if you want video peeking */
 }
 
 *::selection{
@@ -60,7 +83,6 @@ body{
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   color: var(--second-color);
-  background-color: rgb(19, 19, 19);
 }
 h1,h2,p{
   margin: 0;
@@ -259,97 +281,71 @@ img{
   cursor: pointer;
 }
 
-/*  ABOUT */
-.about__container{
-  row-gap: 2rem;
-  text-align: center;
-}
-.about__subtitle{
-  margin-bottom: var(--mb-2);
-}
-.about__typing span{
-  margin-bottom: var(--mb-2);
-  color: #8E4BFC;
-  font-weight: 500;
-}
-.about__typing-1 span {
-  margin-bottom: var(--mb-2);
-  color: #8E4BFC;
-  font-weight: 500;
-}
-.about__img{
-  justify-self: center;
-}
-.about__img img{
-  width: 200px;
-  height: 200px;
-  border-radius: .2rem;
+/* — About Section Grid */
+.about__container {
+  display: grid;
+  gap: var(--mb-6);
 }
 
-/* SKILLS */
-.skills__container{
-  row-gap: 2rem;
-  text-align: center;
+/* Hero statement styling */
+.about__hero-text {
+  font-family: "Anton", sans-serif;
+  font-size: 3rem;
+  line-height: 1.5;
+  font-weight: 400;
+  max-width: 100%;
+  margin: 0 auto;
+  color: var(--second-color);
 }
-.skills__subtitle{
-  margin-bottom: var(--mb-2);
-}
-.skills__text{
-  margin-bottom: var(--mb-4);
-}
-.skills__data{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  font-weight: var(--font-semi);
-  padding: .5rem 1rem;
-  margin-bottom: var(--mb-4);
-  border-radius: .5rem;
-  box-shadow: 0 4px 25px rgba(14,36,49,.15);
-}
-.skills__icon{
-  font-size: 2rem;
-  margin-right: var(--mb-2);
-  color: var(--main-color);
-}
-.skills__names{
+
+/* “This is me.” label + divider */
+.about__label-wrap {
   display: flex;
   align-items: center;
+  gap: var(--mb-2);
 }
-/* .skills__bar{
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  background-color: var(--main-color);
-  height: .25rem;
-  border-radius: .5rem;
-  z-index: var(--z-back);
+.about__label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #888;
 }
-.skills__html{
-  width: 90%;
+.about__divider {
+  flex: 1;
+  border: none;
+  border-top: 1px solid #444;
 }
-.skills__css{
-  width: 80%;
+
+/* Two-column intro */
+.about__intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
 }
-.skills__js{
-  width: 30%;
+.about__intro-heading {
+  font-size: var(--h2-font-size);
+  margin: 0;
+  color: var(--second-color);
 }
-.skills__react{
-  width: 60%;
+.about__intro-text p {
+  color: rgb(200,200,200);
+  font-size: var(--normal-font-size);
+  line-height: 1.6;
 }
-.skills__python{
-    width: 60%;
+
+/* Responsive fallback */
+@media screen and (max-width: 768px) {
+  .about__intro-grid {
+    grid-template-columns: 1fr;
+  }
+  .about__hero-text {
+    font-size: 2rem;
+  }
 }
-.skills__java{
-    width: 30%;
-}
-.skills__SQL{
-    width: 70%;
-} */
-.skills__img{
-  border-radius: .5rem;
-}
+
+
+
 
 
 .footer{
@@ -452,13 +448,10 @@ img{
     bottom: 15%;
   }
 
-  .about__container, .skills__container, .edu__container{
+  .edu__container{
     grid-template-columns: repeat(2,1fr);
     align-items: center;
     text-align: initial;
-  }
-  .about__img img{
-    width: 100%;
   }
   .work__container{
     grid-template-columns: repeat(3, 1fr);
@@ -608,4 +601,79 @@ img{
 /* Ensure section title spacing */
 #experience .section-title {
   margin-bottom: var(--mb-4);
+}
+
+
+/* Make the parent positioned for absolute children */
+#home {
+  position: relative;
+  overflow: hidden; /* hide any video overflow */
+}
+
+/* Style the video to cover the entire section */
+.home__video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;  /* ensures the video fills the area without distortion */
+  z-index: -1;        /* send it behind the text and images */
+}
+
+
+/* container grid: labels on left, items on right */
+.skills-grid {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Left labels */
+.skills-labels {
+  display: flex;
+  flex-direction: column;
+}
+.skills-label {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 2.5rem;
+}
+
+/* Right: each row of icons */
+.skills-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.skills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+}
+
+/* Icon + text */
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  color: var(--second-color);
+}
+.skill-icon {
+  width: 32px;
+  height: 32px;
+}
+
+/* Section title override (if needed) */
+#skills .section-title {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 3rem;
 }
