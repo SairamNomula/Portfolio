@@ -15,7 +15,11 @@
   --big-font-size: 2rem;
   --h2-font-size: 1.25rem;
   --normal-font-size: 0.938rem;
+  --second-color: #FFF;
+  --header-height: 60px;
+  --spacing: 1.5rem;
 }
+
 @media screen and (min-width: 768px){
   :root{
     --big-font-size: 3.5rem;
@@ -63,9 +67,12 @@ html{
   filter: blur(8px) brightness(0.1);
 }
 
-/* Make sure your header/nav sits above */
 .l-header {
-  z-index: var(--z-fixed); /* already 100 */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 1000;
 }
 
 *::selection{
@@ -136,14 +143,6 @@ img{
   margin-left: var(--mb-2);
   margin-right: var(--mb-2);
 }
-.l-header{
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: var(--z-fixed);
-  padding-bottom: 15px;
-}
 
 .visitor-count {
   display: flex;
@@ -154,78 +153,150 @@ img{
   display: block;
 }
 
-.nav{
-  height: var(--header-height);
-  display: flex;
-  justify-content: space-between;
+.nav {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  font-weight: var(--font-semi);
-}
-@media screen and (max-width: 768px){
-  .nav__menu{
-    position: fixed;
-    top: var(--header-height);
-    right: -100%;
-    width: 100%;
-    height: 100%;
-    padding: 3rem;
-    transition: .5s;
-  }
-}
-.nav__item{
-  margin-bottom: var(--mb-5);
-}
-.nav__link{
-  position: relative;
-  color: #fff;
-}
-.nav__link:hover{
-  position: relative;
-}
-.nav__link:hover::after{
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 0.25rem;
-  left: 0;
-  top: 2rem;
-  background-color: var(--main-color);
-}
-.nav__logo{
-  color: var(--main-color);
-  cursor: pointer;
-  padding: 0;
-  margin: 0;
-  margin-right: var(--mb-2);
+  padding: 0 var(--spacing);
+  gap: var(--spacing);
 }
 
-.nav__logo img {
-  width: 170px; 
-  height: auto;
+/* ===== LOGO ===== */
+.nav__logo {
   display: block;
 }
+.nav__logo img {
+  display: block;
+  height: 40px;
+  width: auto;
+}
 
-.nav__toggle{
+/* ===== MENU LINKS ===== */
+.nav__list {
+  display: none;     /* hidden on mobile */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: var(--spacing);
+}
+
+/* link styling */
+.nav__link {
+  color: var(--second-color);
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color 0.2s;
+}
+.nav__link:hover,
+.nav__link.active {
   color: var(--main-color);
+}
+.nav__link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--main-color);
+  border-radius: 1px;
+}
+
+/* ===== HIRE ME BUTTON ===== */
+.button1 {
+  background: var(--main-color);
+  color: #fff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: transform 0.2s, background 0.2s;
+}
+.button1:hover {
+  background: #7a3ed1;
+  transform: scale(1.05);
+}
+
+/* ===== HAMBURGER TOGGLE ===== */
+.nav__toggle {
+  display: block;    /* visible on mobile */
+  background: none;
+  border: none;
   font-size: 1.5rem;
+  color: var(--second-color);
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.2s, background 0.2s;
+}
+.nav__toggle:hover {
+  background: rgba(255,255,255,0.1);
+  border-radius: 0.5rem;
+}
+
+/* ===== MOBILE OVERLAY MENU ===== */
+.nav__menu {
+  position: fixed;
+  top: var(--header-height);
+  right: -100%;
+  width: 100%;
+  height: calc(100% - var(--header-height));
+  background: rgba(31,32,33,0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+.nav__menu.show {
+  right: 0;
+}
+
+/* vertical link list on mobile */
+.nav__menu .nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mb-5);
+  text-align: center;
+}
+
+/* close button (add in HTML inside .nav__menu) */
+.nav__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--second-color);
   cursor: pointer;
 }
 
-/*Active menu*/
-.active::after{
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 0.2rem;
-  left: 0;
-  top: 2rem;
-  background-color: var(--main-color);
+/* ===== DESKTOP BREAKPOINT ===== */
+@media (min-width: 768px) {
+  .nav__list {
+    display: flex;
+  }
+  .nav__toggle {
+    display: none;
+  }
+  .nav__menu {
+    position: static;
+    width: auto; height: auto;
+    background: none;
+    display: block !important;
+    right: 0;
+    padding: 0;
+  }
+  .nav__menu .nav__list {
+    flex-direction: row;
+    gap: var(--spacing);
+  }
 }
 
-/* Show menu */
-.show{
-  right: 0;
-}
+
 
 /* HOME */
 .home{
