@@ -73,6 +73,8 @@ html{
   width: 100%;
   height: var(--header-height);
   z-index: 1000;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 *::selection{
@@ -153,10 +155,11 @@ img{
   display: block;
 }
 
+/* ===== NAV CONTAINER ===== */
 .nav {
   max-width: 1200px;
-  height: 100%;
   margin: 0 auto;
+  height: 100%;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
@@ -167,29 +170,35 @@ img{
 /* ===== LOGO ===== */
 .nav__logo {
   display: block;
+  margin: 0;
+  padding: 0;
 }
 .nav__logo img {
   display: block;
   height: 40px;
   width: auto;
+  border: none;
+  box-shadow: none;
 }
 
 /* ===== MENU LINKS ===== */
+/* Mobile: hidden */
 .nav__list {
-  display: none;     /* hidden on mobile */
+  display: none;
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
   gap: var(--spacing);
 }
 
-/* link styling */
+/* Link styles */
 .nav__link {
   color: var(--second-color);
   font-weight: 500;
-  position: relative;
   padding: 0.5rem 0;
-  transition: color 0.2s;
+  position: relative;
+  text-shadow: none;
+  transition: color 0.2s, background 0.2s;
 }
 .nav__link:hover,
 .nav__link.active {
@@ -221,18 +230,19 @@ img{
 }
 
 /* ===== HAMBURGER TOGGLE ===== */
+/* Mobile: visible */
 .nav__toggle {
-  display: block;    /* visible on mobile */
+  display: block;
   background: none;
   border: none;
   font-size: 1.5rem;
   color: var(--second-color);
   cursor: pointer;
   padding: 0.5rem;
-  transition: color 0.2s, background 0.2s;
+  transition: background 0.2s, color 0.2s;
 }
 .nav__toggle:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 0.5rem;
 }
 
@@ -243,26 +253,28 @@ img{
   right: -100%;
   width: 100%;
   height: calc(100% - var(--header-height));
-  background: rgba(31,32,33,0.95);
+  background: rgba(31, 32, 33, 0.95);
   display: flex;
   justify-content: center;
   align-items: center;
   transition: right 0.3s ease;
   z-index: 999;
+  box-shadow: none;
+  border: none;
 }
 .nav__menu.show {
   right: 0;
 }
 
-/* vertical link list on mobile */
+/* Vertical list inside mobile overlay */
 .nav__menu .nav__list {
   display: flex;
   flex-direction: column;
-  gap: var(--mb-5);
+  gap: var(--spacing);
   text-align: center;
 }
 
-/* close button (add in HTML inside .nav__menu) */
+/* ===== CLOSE BUTTON ===== */
 .nav__close {
   position: absolute;
   top: 1rem;
@@ -272,23 +284,31 @@ img{
   font-size: 2rem;
   color: var(--second-color);
   cursor: pointer;
+  transition: color 0.2s;
+}
+.nav__close:hover {
+  color: var(--main-color);
 }
 
-/* ===== DESKTOP BREAKPOINT ===== */
+/* ===== DESKTOP LAYOUT ===== */
 @media (min-width: 768px) {
+  /* Show inline links */
   .nav__list {
     display: flex;
   }
+  /* Hide hamburger */
   .nav__toggle {
     display: none;
   }
+  /* Reset overlay to inline */
   .nav__menu {
     position: static;
-    width: auto; height: auto;
-    background: none;
     display: block !important;
-    right: 0;
+    width: auto;
+    height: auto;
+    background: none;
     padding: 0;
+    right: 0;
   }
   .nav__menu .nav__list {
     flex-direction: row;
@@ -296,6 +316,31 @@ img{
   }
 }
 
+/* ===== CLOSE BUTTON ===== */
+.nav__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--second-color);
+  cursor: pointer;
+  transition: color 0.2s;
+
+  /* hide by default */
+  display: none;
+}
+.nav__close:hover {
+  color: var(--main-color);
+}
+
+/* show only in mobile/overlay */
+@media (max-width: 767px) {
+  .nav__close {
+    display: block;
+  }
+}
 
 
 /* HOME */
