@@ -58,15 +58,14 @@ html{
   left:  0;
   width: 100%;
   height: 100%;
-  object-fit: cover;       /* fill without distortion */
-  z-index: -1;             /* behind everything */
+  object-fit: cover;  
+  z-index: -1;            
   filter: blur(8px) brightness(0.1);
 }
 
 /* Make sure your header/nav sits above */
 .l-header {
   z-index: var(--z-fixed); /* already 100 */
-  background-color: rgba(31,32,33,0.85); /* semi-transparent if you want video peeking */
 }
 
 *::selection{
@@ -143,16 +142,7 @@ img{
   top: 0;
   left: 0;
   z-index: var(--z-fixed);
-  background-color: rgba(31, 32, 33, 0.953);
-  box-shadow: 0 1px 4px rgba(35, 37, 39, 0.752);
-  /* padding-bottom: 15px;
-  clip-path:
-  polygon(
-    0% 0%,
-    100% 0%
-    100% calc(100% -15px),
-    0% 100%
-  ); */
+  padding-bottom: 15px;
 }
 
 .visitor-count {
@@ -178,8 +168,7 @@ img{
     right: -100%;
     width: 100%;
     height: 100%;
-    padding: 2rem;
-    background-color: #000;
+    padding: 3rem;
     transition: .5s;
   }
 }
@@ -197,7 +186,7 @@ img{
   position: absolute;
   content: "";
   width: 100%;
-  height: 0.15rem;
+  height: 0.25rem;
   left: 0;
   top: 2rem;
   background-color: var(--main-color);
@@ -205,7 +194,17 @@ img{
 .nav__logo{
   color: var(--main-color);
   cursor: pointer;
+  padding: 0;
+  margin: 0;
+  margin-right: var(--mb-2);
 }
+
+.nav__logo img {
+  width: 170px; 
+  height: auto;
+  display: block;
+}
+
 .nav__toggle{
   color: var(--main-color);
   font-size: 1.5rem;
@@ -258,9 +257,9 @@ img{
 }
 .home__img{
   position: absolute;
-  right: 0;
+  right: 10%;
   bottom: 0;
-  width: 370px;
+  width: 350px;
 }
 
 /*BUTTONS*/
@@ -357,53 +356,6 @@ img{
 }
 
 
-
-
-
-.footer{
-  background-color: #000;
-  color: var(--main-color);
-  text-align: center;
-  font-weight: var(--font-semi);
-  padding: 2rem 0;
-}
-.footer__title{
-  font-size: 2rem;
-  margin-bottom: var(--mb-1);
-}
-.footer__content{
-    font-size: 1.5rem;
-    margin-bottom: var(--mb-1);
-}
-.footer__social{
-  margin-bottom: var(--mb-4);
-}
-.footer__icon{
-  font-size: 2rem;
-  color: #fff;
-  margin: 0 var(--mb-2);
-}
-
-/* .sosal{
-  text-align: center;
-  padding: 2rem 0;
-  margin: 0 var(--mb-2);
-}
-
-.mailf{
-  height: 32px;
-  display: block;
-  text-indent: -9999px;
-  background-image: url(https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=Gmail&logoColor=white);
-  background-repeat: no-repeat;
-}
-.gitf{
-  height: 32px;
-  display: block;
-  text-indent: -9999px;
-  background-image: url(https://img.shields.io/badge/github-%2324292e.svg?&style=for-the-badge&logo=github&logoColor=white);
-  background-repeat: no-repeat;
-} */
 /* ===== MEDIA QUERIES=====*/
 @media screen and (min-width: 768px){
   body{
@@ -423,6 +375,7 @@ img{
 
   .nav{
     height: calc(var(--header-height) + 1rem);
+    align-items: center;
   }
   .nav__list{
     display: flex;
@@ -456,8 +409,8 @@ img{
     margin-right: var(--mb-4);
   }
   .home__img{
-    width: 457px;
-    bottom: 15%;
+    width: 450px;
+    bottom: 10%;
   }
 
   .edu__container{
@@ -484,7 +437,7 @@ img{
     margin-right: auto;
   }
   .home__img{
-    right: 10%;
+    right: 5%;
   }
 }
 
@@ -779,7 +732,7 @@ img{
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 #projects .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-20px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
@@ -796,7 +749,7 @@ img{
   transition: opacity 0.5s ease-in-out;
 }
 #projects .card:hover .project-info {
-  opacity: 1;
+  opacity: 2;
 }
 
 #projects .project-bio h3 {
@@ -831,80 +784,90 @@ img{
 }
 
 
-
-/* Container caps width & centers content */
-#clubs-volunteering .container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Two-column responsive grid */
-#clubs-volunteering .cv-grid {
+/* 1) Grid of postcard cards */
+#clubs-volunteering .cv-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--mb-4);
   margin-top: var(--mb-4);
 }
 
-/* Section title uses existing .section-title styling */
-
-/* Column headings */
-.cv-heading {
-  font-size: 1.5rem;
-  margin-bottom: var(--mb-3);
-  color: var(--main-color);
-}
-
-/* Card styling */
-.cv-box {
+/* 2) Card container */
+.cv-card {
   background: rgb(31, 32, 33);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
+  border-radius: 0.75rem;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.cv-box:hover {
-  transform: translateY(-4px);
+.cv-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
 }
 
-/* Date line */
+/* 3) Coloured header bar */
+.cv-card-header {
+  background-color: var(--main-color);
+  padding: 1rem;
+  font-size: 1.25rem;
+  color: #fff;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* 4) List inside card */
+.cv-card-list {
+  list-style: none;
+  margin: 0;
+  padding: 1rem;
+}
+
+/* 5) Individual entry */
+.cv-item {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #444;
+}
+.cv-item:last-child {
+  border-bottom: none;
+}
+
+/* 6) Date line */
 .cv-year {
   display: flex;
   align-items: center;
   font-size: 0.9rem;
   color: #ccc;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 .cv-year i {
   margin-right: 0.5rem;
   color: var(--main-color);
 }
 
-/* Role title */
+/* 7) Role & organization */
 .cv-role {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #fff;
-  margin-bottom: 0.5rem;
+  margin: 0.25rem 0;
 }
-
-/* Organization name */
 .cv-org {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #aaa;
   line-height: 1.4;
+  margin: 0;
 }
 
-/* Mobile: stack columns */
+/* 8) Mobile: single column */
 @media screen and (max-width: 768px) {
-  #clubs-volunteering .cv-grid {
+  #clubs-volunteering .cv-card-grid {
     grid-template-columns: 1fr;
   }
 }
 
+
+
 /* ===== Featured Section ===== */
 #featured {
-  background-color: rgba(0, 0, 0, 0.6);
   padding: var(--mb-6) 0;
 }
 
@@ -964,3 +927,111 @@ img{
 
 /* hide old arrows */
 #featured .carousel-btn { display: none; }
+
+
+.footer-gallery {
+  color: #fff;
+  padding: 4rem 0 2rem;
+}
+.footer-gallery__images {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.polaroid {
+  --size: 180px;
+  width: var(--size);
+  transform: rotate(var(--r));
+  box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+  background: #fff;
+  padding: 0.2rem 0.2rem;
+  border-radius: 0.25rem;
+}
+
+.polaroid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.15rem;
+}
+
+.polaroid-stack {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.footer-gallery__quote {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+.footer-gallery__quote small {
+  display: block;
+  color: #777;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.footer-gallery__quote p {
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.footer-gallery__divider {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 2rem auto;
+  width: 80%;
+}
+
+.footer-gallery__bottom {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  width: 90%;
+  max-width: 1024px;
+  margin: 0 auto;
+  gap: 1rem;
+}
+.footer-logo img {
+  height: 75px;
+}
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-links a {
+  color: #ccc;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color .2s;
+}
+.footer-links a:hover {
+  color: var(--main-color);
+}
+
+@media (max-width: 768px) {
+  .footer-gallery__images {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-gallery__bottom {
+    grid-template-columns: 1fr;
+    text-align: center;
+    row-gap: 1rem;
+  }
+  .footer-links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

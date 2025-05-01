@@ -1,23 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // ===== MENU SHOW =====
+  // ===== MENU SHOW/HIDE =====
   const navMenu   = document.getElementById('nav-menu');
   const navToggle = document.getElementById('nav-toggle');
   const navClose  = document.getElementById('nav-close');
 
-  navToggle.addEventListener('click', () => {
-    navMenu.classList.add('show');
-  });
-  navClose.addEventListener('click', () => {
-    navMenu.classList.remove('show');
-  });
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.add('show');
+    });
+  }
 
-document.querySelectorAll('.nav__link-list a').forEach(link =>
-    link.addEventListener('click', () => navMenu.classList.remove('show'))
-  );
+  if (navClose && navMenu) {
+    navClose.addEventListener('click', () => {
+      navMenu.classList.remove('show');
+    });
+  }
+
+  // hide menu when any nav link is clicked
+  document.querySelectorAll('.nav__list .nav__link').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu?.classList.remove('show');
+    });
+  });
 
   // ===== SCROLLREVEAL =====
   if (window.ScrollReveal) {
-    const sr = ScrollReveal({ origin: 'top', distance: '80px', duration: 2000, reset: true });
+    const sr = ScrollReveal({
+      origin: 'top',
+      distance: '80px',
+      duration: 2000,
+      reset: true
+    });
     sr.reveal('.home__title');
     sr.reveal('.button',            { delay: 200 });
     sr.reveal('.home__img',         { delay: 400 });
@@ -47,7 +60,7 @@ document.querySelectorAll('.nav__link-list a').forEach(link =>
   }
 
   // ===== SKILLS ANIMATION =====
-  const skillGroups = Array.from(document.querySelectorAll('.skills__group'));
+  const skillGroups = document.querySelectorAll('.skills__group');
   if (skillGroups.length && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
@@ -57,18 +70,43 @@ document.querySelectorAll('.nav__link-list a').forEach(link =>
         }
       });
     }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+
     skillGroups.forEach(group => observer.observe(group));
   }
 
   // ===== FEATURED MARQUEE SETUP =====
-  // In app.js, inside DOMContentLoaded:
-const carousel = document.querySelector('#featured .carousel');
-if (carousel) {
-  // clone original five cards so the loop has 10 total
-  const originals = Array.from(carousel.children);
-  originals.forEach(card => carousel.appendChild(card.cloneNode(true)));
-  // hide native scrollbars
-  carousel.style.overflow = 'hidden';
-}
+  const carousel = document.querySelector('#featured .carousel');
+  if (carousel) {
+    const originals = Array.from(carousel.children);
+    originals.forEach(card => carousel.appendChild(card.cloneNode(true)));
+    carousel.style.overflow = 'hidden';
+  }
 
+  // ===== DYNAMIC COPYRIGHT YEAR =====
+  const yearEl = document.getElementById('currentYear');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+
+  // ===== BACK TO TOP BUTTON =====
+  const backBtn = document.getElementById('backToTop');
+  if (backBtn) {
+    // hide/show on scroll
+    window.addEventListener('scroll', () => {
+      backBtn.style.display = (window.scrollY > 300 ? 'block' : 'none');
+    });
+
+    // scroll up smoothly
+    backBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // keyboard accessibility
+    backBtn.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        backBtn.click();
+      }
+    });
+  }
 });
