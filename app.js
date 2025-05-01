@@ -1,4 +1,17 @@
+const throttle = (fn, wait = 100) => {
+  let last = 0;
+  return (...args) => {
+    const now = Date.now();
+    if (now - last >= wait) {
+      last = now;
+      fn(...args);
+    }
+  };
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
+  
   // ===== MENU SHOW/HIDE =====
   const navMenu   = document.getElementById('nav-menu');
   const navToggle = document.getElementById('nav-toggle');
@@ -42,6 +55,27 @@ document.addEventListener('DOMContentLoaded', () => {
     sr.reveal('.work__img',      { interval: 200 });
     sr.reveal('.contact__input', { interval: 200 });
   }
+
+  // SCROLL HANDLER (throttled)
+  const onScroll = () => {
+    const y = window.scrollY;
+    // shrink header after 50px
+    header?.classList.toggle("header--scrolled", y > 50);
+    // show back-to-top after 300px
+    backBtn?.classList.toggle("visible", y > 300);
+  };
+  window.addEventListener("scroll", throttle(onScroll, 100));
+
+
+  // SCROLL-SPY: highlight nav link for section in view
+  const sections = document.querySelectorAll("section[id]");
+  const spy = new IntersectionObserver((entries) => {
+    for (const ent of entries) {
+      const navLink = document.querySelector(`.nav__link[href="#${ent.target.id}"]`);
+      navLink?.classList.toggle("active", ent.isIntersecting);
+    }
+  }, { rootMargin: "-50% 0px -50% 0px" });
+  sections.forEach(sec => spy.observe(sec));
 
   // ===== TYPED.JS =====
   if (window.Typed) {
@@ -109,4 +143,45 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // BACK TO TOP CLICK
+  backBtn?.addEventListener("click", () =>
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  );
+
+
+  // 1) Close on ESC
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    navMenu?.classList.remove('show');
+  }
+});
+
+// 2) Simple focus-trap inside the menu when open
+const focusableSelectors = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+const trapFocus = () => {
+  const nodes = Array.from(navMenu.querySelectorAll(focusableSelectors));
+  if (!nodes.length) return;
+  const first = nodes[0], last = nodes[nodes.length - 1];
+
+  navMenu.addEventListener('keydown', function onKey(e) {
+    if (e.key !== 'Tab') return;
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+};
+
+// invoke whenever you open the menu
+navToggle?.addEventListener('click', () => {
+  navMenu?.classList.add('show');
+  setTimeout(() => navClose.focus(), 300); // move focus into menu
+  trapFocus();
+});
+
 });

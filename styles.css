@@ -155,6 +155,24 @@ img{
   display: block;
 }
 
+/* shrink header on scroll */
+.header--scrolled {
+  height: 50px;               /* or whatever */
+  background: rgba(31,32,33,0.8);
+}
+
+/* back-to-top visibility */
+#backToTop {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+#backToTop.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+
 /* ===== NAV CONTAINER ===== */
 .nav {
   max-width: 1200px;
