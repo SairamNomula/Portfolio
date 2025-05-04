@@ -16,11 +16,16 @@
         <title>Sairam's Portfolio</title>
     </head>
     <body>
+      <!-- SCROLL PROGRESS INDICATOR -->
+  <div id="scroll-indicator">
+    <div id="scroll-indicator-bar"></div>
+  </div>
       <video id="bg-video" autoplay muted loop playsinline>
         <source src="bgvideo2.mp4" type="video/mp4">
         <!-- Fallback message -->
         Your browser does not support HTML5 video.
       </video>
+
         <!--===== HEADER =====-->
         <header class="l-header">
             <nav class="nav bd-grid">
@@ -84,7 +89,7 @@
                     <a href="mailto:sairamnomula14@gmail.com" class="home__social-icon" target="_blank"><i class='bx bx-mail-send'></i></i></a>
                     <a href="https://www.linkedin.com/in/sairamnomula14" class="home__social-icon" target="_blank"><i class='bx bxl-linkedin'></i></a>
                     <a href="https://github.com/SairamNomula" class="home__social-icon" target="_blank"><i class='bx bxl-github' ></i></a>
-                    <a href="https://www.instagram.com/sairam_nomula/" class="home__social-icon" target="_blank"><i class='bx bxl-instagram' ></i></a>
+                    <!-- <a href="https://www.instagram.com/sairam_nomula/" class="home__social-icon" target="_blank"><i class='bx bxl-instagram' ></i></a> -->
                 </div>
                 
 
@@ -699,6 +704,7 @@
       <li><a href="https://www.linkedin.com/in/sairamnomula14" target="_blank">LinkedIn ↗</a></li>
       <li><a href="resume/Resume.pdf" target="_blank" download="Sairam's Resume" >Resume ↗</a></li>
       <li><a href="https://github.com/SairamNomula" target="_blank">GitHub ↗</a></li>
+      <li><a href="https://www.salesforce.com/trailblazer/sairamnomula" target="_blank">Trailblazer ↗</a></li>
     </ul>
   </div>
 </footer>
@@ -710,8 +716,29 @@
   <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
   <script src="https://unpkg.com/akar-icons-fonts"></script>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="scroll-indicator.js"></script>
   <script>
     AOS.init();
   </script>
+  <script>
+    ;(function() {
+      const bar = document.getElementById('scroll-indicator-bar');
+      if (!bar) return;
+
+      function updateProgress() {
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+        bar.style.height = pct + '%';
+      }
+
+      // update on scroll & resize
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      window.addEventListener('resize', updateProgress);
+      // initialize once DOM is ready
+      document.addEventListener('DOMContentLoaded', updateProgress);
+    })();
+  </script>
+  
     </body>
 </html>
