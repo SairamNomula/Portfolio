@@ -89,8 +89,13 @@
                     <a href="mailto:sairamnomula14@gmail.com" class="home__social-icon" target="_blank"><i class='bx bx-mail-send'></i></i></a>
                     <a href="https://www.linkedin.com/in/sairamnomula14" class="home__social-icon" target="_blank"><i class='bx bxl-linkedin'></i></a>
                     <a href="https://github.com/SairamNomula" class="home__social-icon" target="_blank"><i class='bx bxl-github' ></i></a>
+                    <a href="https://www.salesforce.com/trailblazer/sairamnomula" target="_blank" class="home__social-icon">
+                      <img src="/logos/salesforce.png" alt="Salesforce" style="height: 20px; width: auto;">
+                    </a>
                     <!-- <a href="https://www.instagram.com/sairam_nomula/" class="home__social-icon" target="_blank"><i class='bx bxl-instagram' ></i></a> -->
                 </div>
+
+                
                 
 
                 <div class="home__img">    
@@ -722,15 +727,14 @@
   </script>
   <script>
     ;(function() {
-      const bar = document.getElementById('scroll-indicator-bar');
-      if (!bar) return;
+      const scrollBar = document.getElementById("scroll-indicator-bar");
 
-      function updateProgress() {
-        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const pct = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
-        bar.style.height = pct + '%';
-      }
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    scrollBar.style.height = `${scrollPercent}%`;
+  });
 
       // update on scroll & resize
       window.addEventListener('scroll', updateProgress, { passive: true });

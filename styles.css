@@ -6,19 +6,32 @@
 
 :root{
   --main-color: #8E4BFC;
-  --second-color: #fff;
-}
+  --main-color-alt: #cd4eff;
+  --main-gradient: linear-gradient(135deg, var(--main-color), var(--main-color-alt));
+  --second-color: #ffffff;
+  --scroll-track: rgba(255, 255, 255, 0.15);
+  --scroll-fill: var(--main-gradient);
 
-
-:root{
   --body-font: 'Poppins', sans-serif;
   --big-font-size: 2rem;
   --h2-font-size: 1.25rem;
   --normal-font-size: 0.938rem;
-  --second-color: #FFF;
   --header-height: 60px;
   --spacing: 1.5rem;
+
+  --mb-1: 0.5rem;
+  --mb-2: 1rem;
+  --mb-3: 1.5rem;
+  --mb-4: 2rem;
+  --mb-5: 2.5rem;
+  --mb-6: 3rem;
+
+  --z-back: -10;
+  --z-normal: 1;
+  --z-tooltip: 10;
+  --z-fixed: 100;
 }
+
 
 @media screen and (min-width: 768px){
   :root{
@@ -26,22 +39,6 @@
     --h2-font-size: 2rem;
     --normal-font-size: 1rem;
   }
-}
-
-:root{
-  --mb-1: 0.5rem;
-  --mb-2: 1rem;
-  --mb-3: 1.5rem;
-  --mb-4: 2rem;
-  --mb-5: 2.5rem;
-  --mb-6: 3rem;
-}
-
-:root{
-  --z-back: -10;
-  --z-normal: 1;
-  --z-tooltip: 10;
-  --z-fixed: 100;
 }
 
 *,::before,::after{
@@ -149,11 +146,42 @@ img{
 .visitor-count {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background: var(--main-gradient);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
   z-index: var(--z-fixed);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease-in-out;
 }
+
 .visitor-count img {
+  height: 20px;
+  width: auto;
   display: block;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
 }
+
+/* Responsive fallback */
+@media screen and (max-width: 768px) {
+  .visitor-count {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    gap: 0.25rem;
+  }
+  .visitor-count img {
+    height: 16px;
+  }
+}
+
+
+
 
 /* shrink header on scroll */
 .header--scrolled {
@@ -235,15 +263,15 @@ img{
 
 /* ===== HIRE ME BUTTON ===== */
 .button1 {
-  background: var(--main-color);
+  background: var(--main-gradient);
   color: #fff;
+  font-weight: 600;
   padding: 0.5rem 1.25rem;
   border-radius: 0.5rem;
-  font-weight: 500;
-  transition: transform 0.2s, background 0.2s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .button1:hover {
-  background: #7a3ed1;
+  box-shadow: 0 0 12px var(--main-color-alt);
   transform: scale(1.05);
 }
 
@@ -373,8 +401,10 @@ img{
   font-size: var(--big-font-size);
   margin-bottom: var(--mb-5);
 }
-.home__title-color{
-  color: var(--main-color);
+.home__title-color {
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .home__social{
   display: flex;
@@ -499,8 +529,10 @@ img{
     padding-top: 4rem;
     padding-bottom: 3rem;
   }
-  .section-title{
-    margin-bottom: var(--mb-6);
+  .section-title {
+    background: var(--main-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   .section-title::after{
     width: 80px;
@@ -769,12 +801,12 @@ img{
 
 /* Section title */
 #skills .section-title {
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 3rem;
-  font-size: 2rem;
+  font-size: var(--h2-font-size);
   color: var(--main-color);
+  margin-top: var(--mb-2);
+  margin-bottom: var(--mb-4);
+  text-transform: uppercase;
+  text-align: center;
 }
 
 /* Two-column grid: labels and icon rows */
@@ -1179,7 +1211,7 @@ img{
   right: 1rem;
   transform: translateY(-50%);
   width: 6px;
-  height: 60vh;
+  height: 20vh;
   background: var(--scroll-track);
   border-radius: 3px;
   z-index: 9999;
