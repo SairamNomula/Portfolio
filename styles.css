@@ -173,7 +173,7 @@ img{
 }
 
 /* Responsive fallback */
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   .visitor-count {
     bottom: 1rem;
     right: 1rem;
@@ -184,7 +184,7 @@ img{
   .visitor-count img {
     height: 16px;
   }
-}
+} */
 
 
 
@@ -615,6 +615,47 @@ img{
     right: 5%;
   }
 }
+
+@media screen and (max-width: 768px) {
+  /* 1) hide only the original social-icon links */
+  .home__social-icon {
+    display: none;
+  }
+
+  /* 2) keep the container & visitor-count visible and in the flow */
+  .home__social {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    /* if you’d previously forced it off‐screen, undo that */
+    position: static !important;
+    margin-top: 1rem;
+  }
+  /* .visitor-count {
+    position: static !important;
+    margin: 0;
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none; */
+    /* re-use your flex styles from before */
+    /* display: flex;
+    gap: 0.75rem;
+  } */
+
+  /* 3) hide browser scrollbars as you already have */
+  html, body {
+    scrollbar-width: none;      /* Firefox */
+    -ms-overflow-style: none;   /* IE 10+ */
+  }
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+  }
+}
+
 
 /* Container to center + cap width */
 #education .container {
@@ -1235,4 +1276,62 @@ img{
   background: var(--scroll-fill);
   border-radius: 3px 3px 0 0;
   transition: height 0.1s ease-out;
+}
+
+/* ── MOBILE FOOTER NAV ── */
+.mobile-footer-nav {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(31,32,33,0.85);
+  backdrop-filter: blur(6px);
+  border-radius: 2rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  z-index: var(--z-fixed);
+}
+
+.mobile-footer-nav ul {
+  display: flex;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  list-style: none;
+  gap: 1rem;           /* slightly tighter gap */
+  align-items: center;
+}
+
+.mobile-footer-nav a {
+  color: var(--second-color);
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.mobile-footer-nav a:hover {
+  color: var(--main-color);
+  transform: scale(1.1);
+}
+
+/* Target that LI now that it has mobile-visit */
+.mobile-footer-nav .mobile-visit {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;         /* more breathing room between icon & text */
+}
+
+/* Resize only the badge image, not the entire container */
+.mobile-footer-nav .mobile-visit img {
+  height: 0.5rem;     /* ~20px tall */
+  width: auto;
+}
+
+/* hide on desktop */
+@media (min-width: 768px) {
+  .mobile-footer-nav {
+    display: none;
+  }
 }
